@@ -1,0 +1,25 @@
+﻿@model BOOKMARK.Models.Bookmark
+
+<h2>Edit Bookmark</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div style="color: green; font-weight: bold;">
+        @TempData["Message"]
+    </div>
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />   <!-- 👈 this is required -->
+
+    <div>
+        <label>Title</label>
+        <input type="text" asp-for="Title" required />
+    </div>
+    <div>
+        <label>URL</label>
+        <input type="url" asp-for="Url" required />
+    </div>
+    <br />
+    <button type="submit">Save Changes</button>
+</form>

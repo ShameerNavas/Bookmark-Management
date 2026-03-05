@@ -1,0 +1,43 @@
+﻿@model BOOKMARK.Models.Bookmark
+
+@{
+    ViewBag.Title = "Add Bookmark";
+}
+
+<h2>Add a New Bookmark</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color: red; font-weight: bold;">
+        @ViewBag.Error
+    </div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div style="color: green; font-weight: bold;">
+        @TempData["Message"]
+    </div>
+}
+
+
+<form asp-controller="Bookmark" asp-action="Add" method="post">
+
+    <div>
+        <label>Title</label>
+        <input type="text" asp-for="Title" required />
+    </div>
+    <div>
+        <label>URL</label>
+        <input type="url" asp-for="Url" required />
+    </div>
+    <div>
+        <label>UserName</label>
+        <input type="text" asp-for="UserName" required />
+    </div>
+    <br />
+    <button type="submit">Add Bookmark</button>
+    <a asp-controller="Bookmark" asp-action="List">
+        <button type="button">View Bookmarks</button>
+    </a>
+</form>
